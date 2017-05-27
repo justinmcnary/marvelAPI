@@ -1,0 +1,19 @@
+<h1>Results Page</h1>
+
+<ul>
+  <% data['data']['results'].forEach(function(hero) { %>
+    <li> 
+       <strong> 
+        <%= hero['name'] %>
+       </strong> 
+       <br>
+       <%= hero['description'] %>
+       <br>
+       <%  let image = hero.thumbnail.path + "." + hero.thumbnail.extension; %>
+       <img src= <%= image %> >
+    </li>
+  <% }) %>
+</ul>
+
+
+<a href='/'> <h2> Search Again </h2> </a>
