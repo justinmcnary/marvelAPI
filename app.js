@@ -12,9 +12,12 @@ app.get('/', (req, res) => {
   res.render('search');
 });
 
+let key = process.env.PUBKEY;
+let hash = process.env.HASH;
+
 app.get('/results', (req, res) => {
   let query = req.query.search;
-  let url = 'https://gateway.marvel.com/v1/public/characters?nameStartsWith='+query+'&limit=10&apikey=127fe86aef9f3ebcd2612c3fb311fd21&ts=2&hash=47e062483a83517b5a478026439701da';
+  let url = 'https://gateway.marvel.com/v1/public/characters?nameStartsWith='+query+'&limit=10&apikey='+key+'&ts=2&hash='+hash;
 
   request(url, function (error, response, body) {
     if(!error && response.statusCode == 200) {
